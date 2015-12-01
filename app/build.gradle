@@ -1,4 +1,7 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
+
+def version = "1.0"
 
 android {
     compileSdkVersion 23
@@ -8,7 +11,7 @@ android {
         minSdkVersion 8
         targetSdkVersion 23
         versionCode 1
-        versionName "1.0"
+        versionName version
     }
 
     buildTypes {
@@ -22,4 +25,13 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:23.1.1'
+}
+
+publish {
+    groupId = 'com.github.arychagov'
+    artifactId = 'gc-airhorn'
+    publishVersion = version
+    desc = 'Android library for playing AirHorn sound when GC_FOR_ALLOC event occurs. '
+    licences = ['APACHE-2.0']
+    website = 'https://github.com/arychagov/GC-Airhorn'
 }
