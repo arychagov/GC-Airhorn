@@ -3,6 +3,12 @@ GC Airhorn
 Android library for playing AirHorn sound ([YouTube](https://www.youtube.com/watch?v=2Tt04ZSlbZ0)) when **GC_FOR_ALLOC** event occurs.
 ![AirHorn](./airhorn.png)
 
+Download
+--------
+Download via Gradle:
+```groovy
+compile 'com.github.arychagov:gc-airhorn:1.1'
+```
 Usage
 ------
 Obtain `GcAirHorn` instance via `GcAirHorn.getInstance()` and use `startListening()` method to start listening 
