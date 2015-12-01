@@ -4,7 +4,7 @@ Android library for playing AirHorn sound ([YouTube](https://www.youtube.com/wat
 ![AirHorn](./airhorn.png)
 
 Download
---------
+---------
 Download via Gradle:
 ```groovy
 compile 'com.github.arychagov:gc-airhorn:1.1'
@@ -13,7 +13,14 @@ Usage
 ------
 Obtain `GcAirHorn` instance via `GcAirHorn.getInstance()` and use `startListening()` method to start listening 
 for **GC_FOR_ALLOC** event. After all your things are done, use `stopListening()` to stop listening for **GC_FOR_ALLOC** event.
- 
+Credits
+--------
+Special thanks for the idea to [Adel Nizamutdinov](https://github.com/adelnizamutdinov).
+
+Contributors:
+* Adel Nizamutdinov (https://github.com/adelnizamutdinov)
+* Anton Rychagov (https://github.com/arychagov)
+
 License
 --------
     Copyright (c) 2015
