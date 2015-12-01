@@ -31,6 +31,11 @@ public class GcAirHorn {
     @NonNull private final Context mContext;
     @Nullable private Thread mThread;
 
+    /**
+     * Retrieves instance of this class
+     * @param context context
+     * @return instance
+     */
     public static GcAirHorn getInstance(@NonNull Context context) {
         if (sInstance == null) {
             synchronized (GcAirHorn.class) {
@@ -46,6 +51,9 @@ public class GcAirHorn {
         mContext = context.getApplicationContext();
     }
 
+    /**
+     * Starts listening for GC_FOR_ALLOC events
+     */
     public void startListening() {
         if (mThread != null) {
             return;
@@ -60,6 +68,11 @@ public class GcAirHorn {
                 //noinspection unused
                 PhantomReference<Object> phantom = new PhantomReference<>(new Object(), rq);
                 while (!isInterrupted()) {
+
+                    if (Thread.interrupted()) {
+                        return;
+                    }
+
                     if (rq.poll() != null) {
                         if (player.isPlaying()) {
                             player.seekTo(0);
@@ -70,10 +83,10 @@ public class GcAirHorn {
                         //noinspection UnusedAssignment
                         phantom = new PhantomReference<>(new Object(), rq);
                     }
+
                     try {
                         Thread.sleep(16);
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
+                    } catch (InterruptedException ignored) {
                     }
                 }
             }
@@ -82,6 +95,9 @@ public class GcAirHorn {
         mThread.start();
     }
 
+    /**
+     * Stops listening for GC_FOR_ALLOC events
+     */
     public void stopListening() {
         if (mThread != null) {
             mThread.interrupt();
