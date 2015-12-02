@@ -7,8 +7,18 @@ Download
 ---------
 Download via Gradle:
 ```groovy
-compile 'com.github.arychagov:gc-airhorn:1.1'
+dependencies {
+    compile 'com.github.arychagov:gc-airhorn:1.1'
+}
 ```
+
+Also make sure your project repositories contains jCenter entry:
+```groovy
+repositories {
+    jcenter()
+}
+```
+
 Usage
 ------
 Obtain `GcAirHorn` instance via `GcAirHorn.getInstance()` and use `startListening()` method to start listening 
